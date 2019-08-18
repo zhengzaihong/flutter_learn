@@ -1,213 +1,100 @@
-    import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-    void main() => runApp(MyApp());
 
-    class MyApp extends StatelessWidget {
-      @override
-      Widget build(BuildContext context) {
-        return new MaterialApp(
-          home: new Scaffold(
-              appBar: AppBar(
-                title: Text("呆萌"),
-              ),
-              body: ViewLayout()),
-        );
-      }
-    }
+void main() => runApp(MyApp());
 
-    class ViewLayout extends StatelessWidget {
-      @override
-      Widget build(BuildContext context) {
-        return ListView(
-          children: <Widget>[
-            Text(
-              "这是Stack的简单应用",
-              style: TextStyle(fontSize: 18, color: Colors.green),
-            ),
 
-            SizedBox(
-              height: 5,
-            ),
-            //用容器包装下设置背景色 方便观察
-            Container(
-              color: Colors.deepPurple,
-              height: 60,
-              child: Stack(
-                alignment: Alignment(-1, -1), // 将子元素定位在左上，或者使用常量 topLeft
-                children: <Widget>[
-                  Container(
-                    width: 100,
-                    height: 40,
-                    color: Colors.red,
-                  ),
-                  Text('你说什么？', style: TextStyle(fontSize: 16, color: Colors.white))
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "这是Stack结合Align的应用",
-              style: TextStyle(fontSize: 18, color: Colors.green),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              height: 100,
-              width: 300,
-              color: Colors.red,
-              child: Stack(
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment(1, 0), //定位最右边，垂直居中
-                    child: Icon(Icons.home, size: 30, color: Colors.white),
-                  ),
-                  Align(
-                    alignment: Alignment.center, //定位在容器的中心位置
-                    child: Icon(Icons.search, size: 30, color: Colors.white),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft, //定位在容器的左下
-                    child: Icon(Icons.ac_unit, size: 30, color: Colors.white),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "这是Stack结合Positioned的应用",
-              style: TextStyle(fontSize: 18, color: Colors.green),
-            ),
-            SizedBox(
-              height: 5,
-            ),
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      home: new Scaffold(
+          appBar: AppBar(
+            title: Text("呆萌"),
+          ),
+          body: CouterWidgetState()),
+    );
+  }
+}
+class CouterWidgetState extends StatefulWidget {
+  const CouterWidgetState({Key key, @required this.initValue: 0})
+      : super(key: key);
+  final int initValue;
+  @override
+  State<StatefulWidget> createState() => new CouterState();
+}
 
-            //用容器包装下设置背景色 方便观察
-            Container(
-              color: Colors.deepPurple,
-              height: 60,
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    right: 10, // 让子元素从右边开始对齐
-                    width: 120, //指定宽度为120个单位
-                    child: Icon(Icons.access_alarm, size: 30, color: Colors.white),
-                  ),
-                  Positioned(
-                    bottom: 0, // 让子元素从底部开始对齐
-                    left: 100,
-                    height: 50,
-                    child: Icon(Icons.memory, size: 30, color: Colors.white),
-                  ),
-                  Positioned(
-                    left: 5, // 让子元素从左边开始对齐
-                    width: 150,
-                    child: Text('你很帅，你造吗？',
-                        style: TextStyle(fontSize: 16, color: Colors.white)),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "这是Card应用",
-              style: TextStyle(fontSize: 18, color: Colors.green),
-            ),
-            SizedBox(
-              height: 5,
-            ),
+/// 创建并打开：initState->didChangeDependencies->build.   
+/// 横竖屏切换：didUpdateWidget->build  当前值保留
+/// 离开页面：deactivate->dispose 重新进入init重新初始化
+/// 热重载执行：reassemble->didUpdateWidget->build
+/// 调用setState->build
+class CouterState extends State<CouterWidgetState> {
+  int _couter;
+  /// 初始化调用
+  @override
+  void initState() {
+    super.initState();
+    _couter = widget.initValue;
+    print('initState$_couter');
 
-            Card(
-              margin: EdgeInsets.all(5),
-              color: Colors.cyan,
-              elevation: 10,
-              //10个单位的阴影
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(14.0))),
-              //设置圆角
-              child: Column(
-                children: <Widget>[
-                  ListTile(
-                    title: Text("Mr.Z", style: TextStyle(fontSize: 18)),
-                    subtitle: Text("工程师", style: TextStyle(fontSize: 14)),
-                  ),
-                  ListTile(
-                    title: Text("电话：xxxxx"),
-                  ),
-                ],
-              ),
-            ),
+  }
 
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "这是AspectRatio应用",
-              style: TextStyle(fontSize: 18, color: Colors.deepOrangeAccent),
-            ),
-            SizedBox(
-              height: 5,
-            ),
+  /// State对象依赖发生变化调用；系统语言、主题修改，系统也会通知调用
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    print('didChangeDependencies');
+  }
+  /// 热重载会被调用，在release下永远不会被调用
+  @override
+  void reassemble() {
+    // TODO: implement reassemble
+    super.reassemble();
+    print('reassemble');
+  }
 
-            Container(
-                width: 100,
-                child: AspectRatio(
-                  aspectRatio: 3.0 / 1.0,
-                  child: Container(
-                    color: Colors.red,
-                  ),
-                )),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              "这是Wrap应用",
-              style: TextStyle(fontSize: 18, color: Colors.deepOrangeAccent),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Wrap(
-               spacing: 10,
-               runSpacing: 10,
-               direction: Axis.horizontal,
-               alignment:WrapAlignment.spaceEvenly,
-               children: <Widget>[
-                ButtonItem("盗墓笔记"),
-                ButtonItem("鬼吹灯"),
-                ButtonItem("桃花怪大战菊花侠"),
-                ButtonItem("无主之城"),
-                ButtonItem("琅琊榜"),
-                ButtonItem("仙剑奇侠传"),
-                ButtonItem("风云决"),
-                ButtonItem("哪吒"),
-                ButtonItem("玄门大师"),
-                ButtonItem("废材兄弟"),
-                ButtonItem("爱情公寓"),
-              ],
-            )
-          ],
-        );
-      }
-    }
+  /// 新旧Widget的key、runtimeType不变时调用。也就是Widget.canUpdate=>true
+  @override
+  void didUpdateWidget(CouterWidgetState oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    print('didUpdateWidget');
+  }
 
-    //封装一个简单的Button 方便调度
-    class ButtonItem extends StatelessWidget {
-      final String text;
+  /// State在树种移除调用
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+    print('deactivate');
+  }
 
-      const ButtonItem(this.text, {Key key}) : super(key: key);
+  /// State在树中永久移除调用，相当于释放
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    print('dispose');
+  }
 
-      @override
-      Widget build(BuildContext context) {
-        return RaisedButton(
-            child: Text(this.text,style: TextStyle(color: Colors.red),),
-            textColor: Theme.of(context).cardColor,
-            onPressed: () {});
-      }
-    }
+  /// 用于子树的渲染
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    print('build');
+    return Scaffold(
+      body: Center(
+        child: FlatButton(
+          child: Text('$_couter'),
+          onPressed: (){
+            setState(() {
+              ++_couter;
+            });
+          },
+        ),
+      ),
+    );
+  }
+}
