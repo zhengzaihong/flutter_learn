@@ -1,22 +1,28 @@
-    import 'package:flutter/material.dart';
+      import 'package:flutter/material.dart';
 
-    class SecondPage extends StatelessWidget {
+      class SecondPage extends StatelessWidget {
 
-      String value;
+        final arguments;
 
-      //构造函数接收一个可选命名参数
-      SecondPage({this.value = ""});
+        SecondPage({this.arguments});
 
-
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("第二个界面"),
-          ),
-          body: Center(
-            child: Text("这是第二个界面${this.value}"),
-          ),
-        );
+        @override
+        Widget build(BuildContext context) {
+          return Scaffold(
+            //这里也添加一个返回按钮。
+            floatingActionButton: FloatingActionButton(
+              child: Text('返回'),
+              onPressed: (){
+                // 返回上一个页面
+                Navigator.pop(context);
+              },
+            ),
+            appBar: AppBar(
+              title: Text("第二个界面"),
+            ),
+            body: Center(
+              child: Text("这是第二个界面 传值内容："+arguments["key"]),
+            ),
+          );
+        }
       }
-    }
