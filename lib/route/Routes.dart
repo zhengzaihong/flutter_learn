@@ -1,12 +1,14 @@
       import 'package:flutter/material.dart';
+      import 'package:flutter_learn/page/AppBarPage.dart';
       import 'package:flutter_learn/page/SecondPage.dart';
 
 
       //配置路由
       final routes={
-
          //如有多个，请在这里添加即可。
         '/SecondPage':(context,{arguments})=>SecondPage(arguments:arguments),
+
+        '/':(context)=>AppBarPage(),
 
       };
 

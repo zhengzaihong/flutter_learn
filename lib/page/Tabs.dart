@@ -1,81 +1,96 @@
 
-import 'package:flutter/material.dart';
-import 'package:flutter_learn/page/tabs/CommunityPage.dart';
-import 'package:flutter_learn/page/tabs/PersionPage.dart';
+      import 'package:flutter/material.dart';
 
-import 'tabs/HomePage.dart';
-
-class Tabs extends StatefulWidget {
-  Tabs({Key key}) : super(key: key);
-
-  _TabsState createState() => _TabsState();
-}
-
-class _TabsState extends State<Tabs> {
-
-  int _currentIndex=0;
-
-  List _pageList=[
-    HomePage(),
-    CommunityPage(),
-    PersionPage(),
-  ];
+      //引入准备好的界面
+      import 'tabs/CommunityPage.dart';
+      import 'tabs/PersionPage.dart';
+      import 'tabs/HomePage.dart';
 
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("呆萌"),
-        ),
-        body: this._pageList[this._currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
 
-          currentIndex: this._currentIndex,   //配置对应的索引值选中
+      class Tabs extends StatefulWidget {
 
-          onTap: (int index){
+        _TabsState createState() => _TabsState();
 
-              setState(() {  //改变状态
-                  this._currentIndex=index;
-              });
-          },
+      }
 
-          iconSize:36.0,      //icon的大小
+      class _TabsState extends State<Tabs> {
+
+        //默认选中的索引
+        int _currentIndex=0;
+
+        //将页面封装在集合中，方便通过索引取出
+        List _pageList=[
+          HomePage(),
+          CommunityPage(),
+          PersionPage(),
+        ];
 
 
-          fixedColor:Colors.red,  //选中的颜色
+        @override
+        Widget build(BuildContext context) {
+          return Scaffold(
+              appBar: AppBar(
+                title: Text("呆萌"),
+              ),
+              body: this._pageList[this._currentIndex],
 
-          selectedFontSize: 18,
+              bottomNavigationBar: BottomNavigationBar(
 
-          selectedLabelStyle: TextStyle(color: Colors.red),
+                //配置选中的索引值
+                currentIndex: this._currentIndex,
 
-//          selectedItemColor: Colors.red, 和 fixedColor互斥
+                onTap: (int index){
 
-          unselectedFontSize: 18,
+                  //改变状态
+                    setState(() {
+                        this._currentIndex=index;
+                    });
+                },
 
-          unselectedItemColor:Colors.deepPurple ,
+                //icon的大小
+                iconSize:36.0,
 
-          unselectedLabelStyle: TextStyle(color: Colors.deepPurple),
+                //选中的颜色
+                fixedColor:Colors.red,
 
-          showUnselectedLabels: true,
+                selectedFontSize: 18,
 
-          type:BottomNavigationBarType.fixed,   //配置底部tabs可以有多个按钮
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text("首页")
-            ),
-             BottomNavigationBarItem(
-              icon: Icon(Icons.question_answer),
-              title: Text("社区")
-            ),
-            
-             BottomNavigationBarItem(
-              icon: Icon(Icons.people),
-              title: Text("个人中心")
-            )
-          ],
-        ),
-      );
-  }
-}
+                selectedLabelStyle: TextStyle(color: Colors.red),
+
+                // selectedItemColor: Colors.red, 和 fixedColor互斥
+
+                unselectedFontSize: 18,
+
+                unselectedItemColor:Colors.deepPurple ,
+
+                unselectedLabelStyle: TextStyle(color: Colors.deepPurple),
+
+                showUnselectedLabels: true,
+
+                //配置底部tabs为固定效果，即没有点击后的凸出感
+                type:BottomNavigationBarType.fixed,
+
+                // BottomNavigationBarItem 包装的底部按钮
+                items: [
+
+                  BottomNavigationBarItem(
+
+                    icon: Icon(Icons.home),
+                    title: Text("首页")
+
+                  ),
+                   BottomNavigationBarItem(
+                    icon: Icon(Icons.question_answer),
+                    title: Text("社区")
+                  ),
+
+                   BottomNavigationBarItem(
+                    icon: Icon(Icons.people),
+                    title: Text("个人中心")
+                  )
+                ],
+              ),
+            );
+        }
+      }

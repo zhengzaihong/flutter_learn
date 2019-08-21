@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
+      import 'package:flutter/material.dart';
 
-class PersionPage extends StatefulWidget {
+      class PersionPage extends StatefulWidget {
 
-  PersionPage({Key key}) : super(key: key);
+        PersionPage({Key key}) : super(key: key);
 
-  _PersionPageState createState() => _PersionPageState();
-}
+        _PersionPageState createState() => _PersionPageState();
+      }
 
-class _PersionPageState extends State<PersionPage> {
-  @override
-  Widget build(BuildContext context) {
-      return Container(
-      color: Colors.blue,
-      child: Center(child: Text("个人中心"),),
-    );
-  }
-}
+      class _PersionPageState extends State<PersionPage> {
+        @override
+        Widget build(BuildContext context) {
+            return Container(
+            color: Colors.blue,
+            child: Center(child: Text("个人中心"),),
+          );
+        }
+      }

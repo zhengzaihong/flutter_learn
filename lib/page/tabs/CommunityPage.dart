@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
+      import 'package:flutter/material.dart';
 
-class CommunityPage extends StatefulWidget {
-  CommunityPage({Key key}) : super(key: key);
+      class CommunityPage extends StatefulWidget {
+        CommunityPage({Key key}) : super(key: key);
 
-  _CommunityPageState createState() => _CommunityPageState();
-}
+        _CommunityPageState createState() => _CommunityPageState();
+      }
 
-class _CommunityPageState extends State<CommunityPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      child: Center(child: Text("社区"),),
-    );
-  }
-}
+      class _CommunityPageState extends State<CommunityPage> {
+        @override
+        Widget build(BuildContext context) {
+          return Container(
+            color: Colors.green,
+            child: Center(child: Text("社区"),),
+          );
+        }
+      }

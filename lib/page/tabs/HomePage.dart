@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
+      import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+      class HomePage extends StatefulWidget {
+        HomePage({Key key}) : super(key: key);
 
-  _HomePageState createState() => _HomePageState();
-}
+        _HomePageState createState() => _HomePageState();
+      }
 
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.cyan,
-      child: Center(child: Text("主页"),),
-    );
-  }
-}
+      class _HomePageState extends State<HomePage> {
+        @override
+        Widget build(BuildContext context) {
+          return Container(
+            color: Colors.cyan,
+            child: Center(child: Text("主页"),),
+          );
+        }
+      }
