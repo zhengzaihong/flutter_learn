@@ -3,12 +3,13 @@
       class AppBarPage extends StatelessWidget {
         @override
         Widget build(BuildContext context) {
-
           return MaterialApp(
+            //去掉debug图标
+            debugShowCheckedModeBanner:false ,
 
             home: DefaultTabController(
               //这个一定的和tabs的子元素大小一致
-              length: 3,
+              length: 7,
 
               child: Scaffold(
                 appBar: AppBar(
@@ -19,8 +20,15 @@
                   //标题居中
                   centerTitle: true,
 
-                  bottom: TabBar(
+                  bottom:  TabBar(
 
+                    //设置选中菜单文字颜色
+                    labelColor: Colors.white,
+                    //未选中文字菜单的颜色
+                    unselectedLabelColor: Colors.deepPurple,
+
+
+                    isScrollable: true,
                     //配置指示器颜色
                     indicatorColor: Colors.green,
                     //让指示器和文字等宽
@@ -30,14 +38,13 @@
                       Tab(text: "视频"),
                       Tab(text: "段子"),
                       Tab(text: "趣图"),
-//                      Tab(text: "趣图"),
-//                      Tab(text: "趣图"),
-//                      Tab(text: "趣图"),
-//                      Tab(text: "趣图"),
-//                      Tab(text: "趣图"),
-//                      Tab(text: "趣图"),
+                      Tab(text: "测试"),
+                      Tab(text: "测试"),
+                      Tab(text: "测试"),
+                      Tab(text: "测试"),
                     ],
                   ),
+
 
                   leading: Builder(
                     builder: (BuildContext context) {
@@ -66,7 +73,6 @@
                   ],
                 ),
                 body: TabBarView(
-
                   children: <Widget>[
                     Container(
                       child: Center(
@@ -82,46 +88,31 @@
                       child: Center(
                         child: Text("趣图专区"),
                       ),
-                    )
-
-//                    ,
-//                    Container(
-//                      child: Center(
-//                        child: Text("趣图专区"),
-//                      ),
-//                    ),
-//                    Container(
-//                      child: Center(
-//                        child: Text("趣图专区"),
-//                      ),
-//                    ),
-//                    Container(
-//                      child: Center(
-//                        child: Text("趣图专区"),
-//                      ),
-//                    ),
-//                    Container(
-//                      child: Center(
-//                        child: Text("趣图专区"),
-//                      ),
-//                    ),
-//                    Container(
-//                      child: Center(
-//                        child: Text("趣图专区"),
-//                      ),
-//                    ),
-//                    Container(
-//                      child: Center(
-//                        child: Text("趣图专区"),
-//                      ),
-//                    )
+                    ),
+                    Container(
+                      child: Center(
+                        child: Text("趣图专区"),
+                      ),
+                    ),
+                    Container(
+                      child: Center(
+                        child: Text("趣图专区"),
+                      ),
+                    ),
+                    Container(
+                      child: Center(
+                        child: Text("趣图专区"),
+                      ),
+                    ),
+                    Container(
+                      child: Center(
+                        child: Text("趣图专区"),
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
-
           );
         }
       }
-
-
