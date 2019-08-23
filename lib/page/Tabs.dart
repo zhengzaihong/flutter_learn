@@ -30,10 +30,8 @@
         @override
         Widget build(BuildContext context) {
           return Scaffold(
-              appBar: AppBar(
-                title: Text("呆萌"),
-              ),
               body: this._pageList[this._currentIndex],
+
 
               bottomNavigationBar: BottomNavigationBar(
 
