@@ -19,7 +19,7 @@ class HomePageState extends State<HomePage> {
           title: Text("呆萌"),
           leading:Builder(
             builder: (context) => IconButton(
-              icon: new Icon(Icons.menu),
+              icon: new Icon(Icons.settings),
               onPressed: () => Scaffold.of(context).openDrawer(),
             ),
           ),

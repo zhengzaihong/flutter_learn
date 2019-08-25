@@ -32,6 +32,12 @@
           return Scaffold(
               body: this._pageList[this._currentIndex],
 
+              //appBar: AppBar(
+              //  title: Text("呆萌"),
+              // ),
+
+
+              drawer: WithListenerDrawer(),
 
               bottomNavigationBar: BottomNavigationBar(
 
@@ -39,16 +45,13 @@
                 currentIndex: this._currentIndex,
 
                 onTap: (int index){
-
                   //改变状态
                     setState(() {
                         this._currentIndex=index;
                     });
                 },
-
                 //icon的大小
                 iconSize:36.0,
-
                 //选中的颜色
                 fixedColor:Colors.red,
 
