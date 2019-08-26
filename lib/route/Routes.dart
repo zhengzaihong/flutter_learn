@@ -3,6 +3,7 @@
       import 'package:flutter_learn/page/SecondPage.dart';
       import 'package:flutter_learn/page/TabBarControllerPage.dart';
       import 'package:flutter_learn/page/Tabs.dart';
+      import 'package:flutter_learn/page/button/RaisedButtonPage.dart';
 
 
       //配置路由
@@ -18,7 +19,7 @@
 
         '/TabBarControllerPage':(context)=>TabBarControllerPage(),
 
-
+        '/RaisedButtonPage':(context)=>RaisedButtonPage(),
       };
 
       //优化后

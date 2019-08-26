@@ -1,11 +1,11 @@
 
       import 'package:flutter/material.dart';
+      import 'package:flutter_learn/drawer/WithListenerDrawer.dart';
 
       //引入准备好的界面
       import 'tabs/CommunityPage.dart';
       import 'tabs/PersionPage.dart';
       import 'tabs/HomePage.dart';
-
 
 
       class Tabs extends StatefulWidget {
@@ -32,12 +32,51 @@
           return Scaffold(
               body: this._pageList[this._currentIndex],
 
-              //appBar: AppBar(
-              //  title: Text("呆萌"),
-              // ),
+              floatingActionButton:Container(
+                height: 80,
+                width: 80,
+                //实现一个圆形
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                  color: Colors.white,
+                ),
+                //距离上边 10个单位
+                margin: EdgeInsets.only(top:10),
+                // 8个单位的内边距，让周边有浮出感
+                padding: EdgeInsets.all(8),
+                child: FloatingActionButton(
+                  child: Icon(Icons.add),
+                  backgroundColor: this._currentIndex==1?Colors.red:Colors.deepPurple,
+                  onPressed: (){
+                    setState(() {
+                      this._currentIndex=1;
+                    });
+                  },
+                ),
+              ),
+              //指定显示位置
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
 
-              drawer: WithListenerDrawer(),
+            appBar: AppBar(
+              title: Text("呆萌"),
+              leading:Builder(
+                builder: (context) => IconButton(
+                  icon: new Icon(Icons.settings),
+                  onPressed: () => Scaffold.of(context).openDrawer(),
+                ),
+              ),
+            ),
+
+              // 第七章演示
+              // drawer: LeftDrawerUserAccountsDrawerHeader(),
+              // drawer: LeftDrawerHeader(),
+            drawer: WithListenerDrawer(),
+            endDrawer: Drawer(
+              child: Text(
+                '右侧侧边栏', style: TextStyle(color: Colors.blue, fontSize: 22),
+              ),
+            ),
 
               bottomNavigationBar: BottomNavigationBar(
 

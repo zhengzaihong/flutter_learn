@@ -12,7 +12,24 @@
         Widget build(BuildContext context) {
             return Container(
             color: Colors.blue,
-            child: Center(child: Text("个人中心"),),
+            width: double.infinity,
+            child: Column(
+
+              children: <Widget>[
+
+                RaisedButton(
+                  elevation: 20,
+                  focusElevation: 40,
+                  child: Text('RaisedButton'),
+                  onPressed: () {
+                    //跳转 RaisedButtonPage 界面
+                    Navigator.pushNamed(context,"/RaisedButtonPage");
+                  },
+                ),
+                SizedBox(height: 10)
+              ],
+
+            ),
           );
         }
       }
