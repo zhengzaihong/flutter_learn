@@ -4,6 +4,7 @@
       import 'package:flutter_learn/page/TabBarControllerPage.dart';
       import 'package:flutter_learn/page/Tabs.dart';
       import 'package:flutter_learn/page/button/RaisedButtonPage.dart';
+      import 'package:flutter_learn/page/form/FormPage.dart';
 
 
       //配置路由
@@ -20,6 +21,8 @@
         '/TabBarControllerPage':(context)=>TabBarControllerPage(),
 
         '/RaisedButtonPage':(context)=>RaisedButtonPage(),
+
+        '/FormPagePage':(context)=>FormPagePage(),
       };
 
       //优化后
