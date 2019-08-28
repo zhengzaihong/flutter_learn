@@ -1,6 +1,12 @@
     import 'package:flutter/foundation.dart';
     import 'package:flutter/material.dart';
 
+    /// creat_user: zhengzaihong
+    /// Email:1096877329@qq.com
+    /// creat_date: 2019/8/28
+    /// creat_time: 11:35
+    /// describe 实现带有监听回调的 Drawer
+
     class AutoDrawer extends StatefulWidget {
       final double elevation;
       final Widget child;

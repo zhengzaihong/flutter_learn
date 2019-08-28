@@ -1,6 +1,13 @@
       import 'package:flutter/material.dart';
 
 
+      /// creat_user: zhengzaihong
+      /// Email:1096877329@qq.com
+      /// creat_date: 2019/8/28
+      /// creat_time: 11:32
+      /// describe 可以 四边都添加Icon 的组件
+      ///
+      ///
       class FunIconButton extends MaterialButton with MaterialButtonWithIconMixin {
         FunIconButton({
           Key key,
