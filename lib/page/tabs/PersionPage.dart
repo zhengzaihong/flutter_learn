@@ -26,6 +26,7 @@
                   },
                 ),
                 SizedBox(height: 10),
+
                 RaisedButton(
                   elevation: 20,
                   color: Colors.deepPurple,
@@ -35,6 +36,34 @@
                     //跳转 RaisedButtonPage 界面
                     Navigator.pushNamed(context, "/FormPagePage");
 
+                  },
+                ),
+
+
+                SizedBox(height: 10),
+
+                RaisedButton(
+                  elevation: 20,
+                  color: Colors.deepPurple,
+                  focusElevation: 40,
+                  child: Text('ScrollerView', style: TextStyle(color: Colors.white)),
+                  onPressed: () {
+                    //跳转 RaisedButtonPage 界面
+                    Navigator.pushNamed(context, "/ScrollerViewPage");
+
+                  },
+                ),
+
+                SizedBox(height: 10),
+
+                RaisedButton(
+                  elevation: 20,
+                  color: Colors.deepPurple,
+                  focusElevation: 40,
+                  child: Text('Dialog', style: TextStyle(color: Colors.white)),
+                  onPressed: () {
+                    //跳转 RaisedButtonPage 界面
+                    Navigator.pushNamed(context, "/DialogPage");
 
                   },
                 ),

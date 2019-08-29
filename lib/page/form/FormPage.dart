@@ -406,8 +406,6 @@ class _FormFieldWidgetState extends State<FormFieldWidget> {
         child: Column(
           children: <Widget>[
         Scrollable(),
-            CustomScrollView(),
-            SingleChildScrollView(),
             TextFormField(
                 autofocus: true,
                 controller: _unameController,

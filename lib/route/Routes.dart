@@ -4,7 +4,9 @@
       import 'package:flutter_learn/page/TabBarControllerPage.dart';
       import 'package:flutter_learn/page/Tabs.dart';
       import 'package:flutter_learn/page/button/RaisedButtonPage.dart';
+      import 'package:flutter_learn/page/dialog/DialogPage.dart';
       import 'package:flutter_learn/page/form/FormPage.dart';
+      import 'package:flutter_learn/page/scrollview/ScrollerViewPage.dart';
 
 
       //配置路由
@@ -23,6 +25,10 @@
         '/RaisedButtonPage':(context)=>RaisedButtonPage(),
 
         '/FormPagePage':(context)=>FormPagePage(),
+
+        '/ScrollerViewPage':(context)=>ScrollerViewPage(),
+
+        '/DialogPage':(context)=>DialogPage(),
       };
 
       //优化后
