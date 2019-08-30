@@ -1,138 +1,238 @@
-      import 'package:flutter/material.dart';
-      import 'package:flutter_learn/util/ToastUtil.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_learn/util/ToastUtil.dart';
 
-      class DialogPage extends StatefulWidget {
-        DialogPage({Key key}) : super(key: key);
+import 'LoadingDialogView.dart';
 
-        _DialogPageState createState() => _DialogPageState();
-      }
+class DialogPage extends StatefulWidget {
+  DialogPage({Key key}) : super(key: key);
 
-      class _DialogPageState extends State<DialogPage> {
+  _DialogPageState createState() => _DialogPageState();
+}
 
-        _alertDialog() {
-
-          showDialog(
-             //表示点击灰色背景的时候是否消失弹出框
-              barrierDismissible:false,
-              context:context,
-              builder: (context){
-                return AlertDialog(
-                  //添加背景色
-                  backgroundColor:Colors.white,
-                  elevation: 1000,
-                  // 文字内容内距
-                  contentPadding:EdgeInsets.all(30) ,
-                  //标题
-                  title: Text("提示信息!",style: TextStyle(color: Colors.redAccent),),
-                  //内容
-                  content:Text("您确定要删除吗?"),
-                    shape:RoundedRectangleBorder(borderRadius:BorderRadius.all(Radius.circular(10))),
-
-                  actions: <Widget>[
-                    FlatButton(
-                      child: Text("取消"),
-                      onPressed: (){
-                        Navigator.pop(context,'Cancle');
-                      },
-                    ),
-                    FlatButton(
-                      child: Text("确定"),
-                      onPressed: (){
-                        Navigator.pop(context,"Ok");
-                      },
-                    )
-                  ],
-                );
-              }
-          ).then((value){
-            ToastUtil.show("回传值："+value);
-          });
-        }
-
-
-
-  _simpleDialog() {
-
+class _DialogPageState extends State<DialogPage> {
+  _alertDialog() {
     showDialog(
-        barrierDismissible:false,   //表示点击灰色背景的时候是否消失弹出框
-        context:context,
-        builder: (context){
+        //表示点击灰色背景的时候是否消失弹出框
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            //添加背景色
+            backgroundColor: Colors.white,
+            elevation: 1000,
+            // 文字内容内距
+            contentPadding: EdgeInsets.all(30),
+            //标题
+            title: Text("提示信息!", style: TextStyle(color: Colors.redAccent)),
+            //内容
+            content: Text("您确定要删除吗?"),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+
+            actions: <Widget>[
+              FlatButton(
+                child: Text("取消"),
+                onPressed: () {
+                  Navigator.pop(context, 'Cancle');
+                },
+              ),
+              FlatButton(
+                child: Text("确定"),
+                onPressed: () {
+                  Navigator.pop(context, "Ok");
+                },
+              )
+            ],
+          );
+        }).then((value) {
+      ToastUtil.show("回传值：" + value);
+    });
+  }
+
+  _simpleDialog() async {
+    var result = await showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
           return SimpleDialog(
-            title:Text("选择内容"),
+            title: Text("选择内容", style: TextStyle(color: Colors.blue)),
             children: <Widget>[
               SimpleDialogOption(
                 child: Text("Option A"),
-                onPressed: (){
-                  print("Option A");
-                  Navigator.pop(context,"A");
+                onPressed: () {
+                  Navigator.pop(context, "A");
                 },
               ),
               Divider(),
               SimpleDialogOption(
                 child: Text("Option B"),
-                onPressed: (){
-                  print("Option B");
-                  Navigator.pop(context,"B");
+                onPressed: () {
+                  Navigator.pop(context, "B");
                 },
               ),
               Divider(),
               SimpleDialogOption(
                 child: Text("Option C"),
-                onPressed: (){
-                  print("Option C");
-                  Navigator.pop(context,"C");
+                onPressed: () {
+                  Navigator.pop(context, "C");
                 },
               ),
               Divider(),
-
             ],
-
           );
-        }
-    ).then((value){
-      print("结果"+value);
-    });
+        });
 
-
+    ToastUtil.show("回传值：" + result);
   }
 
-  _modelBottomSheet() async{
-
-    var result=await showModalBottomSheet(
-        context:context,
-        builder: (context){
+  _modelBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
           return Container(
+            color: Colors.white,
             height: 220,
             child: Column(
               children: <Widget>[
-
-                ListTile(
-                  title: Text("分享 A"),
-                  onTap: (){
-                    Navigator.pop(context,"分享 A");
-                  },
+                Container(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      "分享",
+                      style: TextStyle(color: Colors.black54),
+                    ),
+                  ),
                 ),
                 Divider(),
-                ListTile(
-                  title: Text("分享 B"),
-                  onTap: (){
-                    Navigator.pop(context,"分享 B");
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                        width: 80,
+                        color: Colors.white,
+                        child: Column(
+                          children: <Widget>[
+                            Icon(
+                              Icons.chat,
+                              color: Colors.green,
+                              size: 40,
+                            ),
+                            SizedBox(height: 10),
+                            Text('微信',
+                                style: TextStyle(color: Colors.deepPurple)),
+                          ],
+                        )),
+                    Container(
+                        width: 140,
+                        color: Colors.white,
+                        child: Column(
+                          children: <Widget>[
+                            Icon(
+                              Icons.question_answer,
+                              color: Colors.green,
+                              size: 40,
+                            ),
+                            SizedBox(height: 10),
+                            Text('QQ',
+                                style: TextStyle(color: Colors.deepPurple)),
+                          ],
+                        )),
+                    Container(
+                        width: 80,
+                        color: Colors.white,
+                        child: Column(
+                          children: <Widget>[
+                            Icon(
+                              Icons.web,
+                              color: Colors.green,
+                              size: 40,
+                            ),
+                            SizedBox(height: 10),
+                            Text('微博',
+                                style: TextStyle(color: Colors.deepPurple)),
+                          ],
+                        )),
+                  ],
                 ),
-                Divider(),
-                ListTile(
-                  title: Text("分享 C"),
-                  onTap: (){
-                    Navigator.pop(context,"分享 C");
-                  },
-                )
+                SizedBox(height: 20),
+                FlatButton(
+                    textColor: Colors.white,
+                    disabledColor: Colors.grey,
+                    disabledTextColor: Colors.grey,
+                    color: Colors.blue,
+                    highlightColor: Colors.blue[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("取消"),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    //按钮点击回调
+                    onPressed: () => Navigator.pop(context)),
               ],
             ),
           );
-        }
-    );
+        });
+  }
 
-    print(result);
+  _showCupertinoAlertDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            title: Text("iOS风格的对话框"),
+            content: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 10,
+                ),
+                Align(
+                  child: Text("你确定不关注我吗？"),
+                  alignment: Alignment(0, 0),
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                child: Text("取消"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              CupertinoDialogAction(
+                child: Text("确定"),
+                onPressed: () {},
+              ),
+            ],
+          );
+        });
+  }
+
+
+  _LoadingDialog() {
+
+         Container(
+            width: 200,
+            height: 200,
+            color: Colors.green,
+            child:  LoadingDialogView(
+              progress: CircularProgressIndicator(
+                  strokeWidth: 3,
+                  //背景颜色
+                  backgroundColor: Colors.yellow,
+                  //进度颜色
+              ),
+              content: Text('正在加载...'),
+              child: Center(
+                child: RaisedButton(
+                  onPressed: ((){
+
+                  }),
+                  child: Text('显示加载动画'),
+                ),
+              ),
+            ),
+          );
   }
 
   @override
@@ -143,27 +243,63 @@
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               RaisedButton(
                 child: Text('AlertDialog对话框'),
                 onPressed: _alertDialog,
               ),
               SizedBox(height: 20),
-//              RaisedButton(
-//                child: Text('select弹出框-SimpleDialog'),
-//                onPressed: _simpleDialog,
-//              ),
-//              SizedBox(height: 20),
-//              RaisedButton(
-//                child: Text('ActionSheet底部弹出框-showModalBottomSheet'),
-//                onPressed: _modelBottomSheet,
-//              ),
-//              SizedBox(height: 20),
-//              // fluttertoast
+              RaisedButton(
+                child: Text('SimpleDialog 对话框'),
+                onPressed: _simpleDialog,
+              ),
+              SizedBox(height: 20),
+              RaisedButton(
+                child: Text('showModalBottomSheet 底部弹出框'),
+                onPressed: _modelBottomSheet,
+              ),
+              SizedBox(height: 20),
+              RaisedButton(
+                child: Text('IOS AlertDialog 对话框'),
+                onPressed: _showCupertinoAlertDialog,
+              ),
+              SizedBox(height: 20),
+
+              SizedBox(
+                child: LinearProgressIndicator(
+                    //背景颜色
+                    backgroundColor: Colors.yellow,
+                    //进度颜色
+                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red)),
+                height: 8.0,
+                width: 200,
+              ),
+
+              SizedBox(height: 20),
+              new SizedBox(
+                //限制进度条的高度
+                height: 40.0,
+                //限制进度条的宽度
+                width: 40,
+                child: new CircularProgressIndicator(
+                    strokeWidth: 3,
+                    //背景颜色
+                    backgroundColor: Colors.yellow,
+                    //进度颜色
+                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red)),
+              ),
+
+              SizedBox(height: 20),
+              RaisedButton(
+                child: Text('加载提示框'),
+                onPressed: _LoadingDialog,
+              ),
+
+
             ],
           ),
-        )
-    );
+        ));
   }
+
 }
