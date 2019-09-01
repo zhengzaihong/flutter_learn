@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/util/ToastUtil.dart';
 
-import 'LoadingDialogView.dart';
+import 'LoadingDialog.dart';
 
 class DialogPage extends StatefulWidget {
   DialogPage({Key key}) : super(key: key);
@@ -211,28 +211,29 @@ class _DialogPageState extends State<DialogPage> {
 
   _LoadingDialog() {
 
-         Container(
-            width: 200,
-            height: 200,
-            color: Colors.green,
-            child:  LoadingDialogView(
-              progress: CircularProgressIndicator(
-                  strokeWidth: 3,
-                  //背景颜色
-                  backgroundColor: Colors.yellow,
-                  //进度颜色
-              ),
-              content: Text('正在加载...'),
-              child: Center(
-                child: RaisedButton(
-                  onPressed: ((){
+    showDialog(
+        context: context, //BuildContext对象
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return new LoadingDialog( //调用对话框
 
-                  }),
-                  child: Text('显示加载动画'),
-                ),
-              ),
-            ),
+//            progress: CircularProgressIndicator(
+//              strokeWidth: 3,
+//              //背景颜色
+//              backgroundColor: Colors.yellow,
+//              //进度颜色
+//            ),
+
+          progress: LinearProgressIndicator(
+            //背景颜色
+              backgroundColor: Colors.yellow,
+              //进度颜色
+              valueColor: new AlwaysStoppedAnimation<Color>(Colors.red)),
+
+            content: Text('正在加载...',style: TextStyle(color: Colors.blue),),
           );
+        });
+
   }
 
   @override
