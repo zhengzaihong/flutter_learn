@@ -16,4 +16,6 @@ class ToastUtil{
             fontSize: 16.0);
     }
 
+    static String name = "";
+
 }

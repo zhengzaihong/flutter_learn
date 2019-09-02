@@ -1,8 +1,9 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/util/ToastUtil.dart';
 
-import 'LoadingDialog.dart';
+import 'LoadingViewDialog.dart';
 
 class DialogPage extends StatefulWidget {
   DialogPage({Key key}) : super(key: key);
@@ -209,32 +210,38 @@ class _DialogPageState extends State<DialogPage> {
   }
 
 
-  _LoadingDialog() {
 
-    showDialog(
-        context: context, //BuildContext对象
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return new LoadingDialog( //调用对话框
+    _LoadingDialog() {
+      showDialog(
+          context: context, //BuildContext对象
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return LoadingViewDialog(
+              //调用对话框
 
-//            progress: CircularProgressIndicator(
-//              strokeWidth: 3,
-//              //背景颜色
-//              backgroundColor: Colors.yellow,
-//              //进度颜色
-//            ),
+                progress: CircularProgressIndicator(
+                  strokeWidth: 3,
+                  //背景颜色
+                  backgroundColor: Colors.red,
+                  //进度颜色
+                ),
 
-          progress: LinearProgressIndicator(
-            //背景颜色
-              backgroundColor: Colors.yellow,
-              //进度颜色
-              valueColor: new AlwaysStoppedAnimation<Color>(Colors.red)),
+//              progress: LinearProgressIndicator(
+//                  //背景颜色
+//                  backgroundColor: Colors.yellow,
+//                  //进度颜色
+//                  valueColor: AlwaysStoppedAnimation<Color>(Colors.red)
+//              ),
 
-            content: Text('正在加载...',style: TextStyle(color: Colors.blue),),
-          );
-        });
+              content: Text(
+                '正在加载...',
+                style: TextStyle(color: Colors.blue),
+              ),
+              maxShowTime: 5,
+            );
+          });
 
-  }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +273,6 @@ class _DialogPageState extends State<DialogPage> {
                 onPressed: _showCupertinoAlertDialog,
               ),
               SizedBox(height: 20),
-
               SizedBox(
                 child: LinearProgressIndicator(
                     //背景颜色
@@ -276,7 +282,6 @@ class _DialogPageState extends State<DialogPage> {
                 height: 8.0,
                 width: 200,
               ),
-
               SizedBox(height: 20),
               new SizedBox(
                 //限制进度条的高度
@@ -290,17 +295,13 @@ class _DialogPageState extends State<DialogPage> {
                     //进度颜色
                     valueColor: new AlwaysStoppedAnimation<Color>(Colors.red)),
               ),
-
               SizedBox(height: 20),
               RaisedButton(
                 child: Text('加载提示框'),
                 onPressed: _LoadingDialog,
               ),
-
-
             ],
           ),
         ));
   }
-
 }
