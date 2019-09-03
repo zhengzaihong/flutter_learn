@@ -6,6 +6,7 @@
       import 'package:flutter_learn/page/button/RaisedButtonPage.dart';
       import 'package:flutter_learn/page/dialog/DialogPage.dart';
       import 'package:flutter_learn/page/form/FormPage.dart';
+      import 'package:flutter_learn/page/persistence/PersistenPage.dart';
       import 'package:flutter_learn/page/scrollview/ScrollerViewPage.dart';
 
 
@@ -29,6 +30,8 @@
         '/ScrollerViewPage':(context)=>ScrollerViewPage(),
 
         '/DialogPage':(context)=>DialogPage(),
+
+        '/PersistenPage':(context)=>PersistenPage(),
       };
 
       //优化后

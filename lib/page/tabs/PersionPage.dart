@@ -21,7 +21,6 @@
                   focusElevation: 40,
                   child: Text('常用Button', style: TextStyle(color: Colors.white)),
                   onPressed: () {
-                    //跳转 RaisedButtonPage 界面
                     Navigator.pushNamed(context, "/RaisedButtonPage");
                   },
                 ),
@@ -33,7 +32,6 @@
                   focusElevation: 40,
                   child: Text('常用表单组件', style: TextStyle(color: Colors.white)),
                   onPressed: () {
-                    //跳转 RaisedButtonPage 界面
                     Navigator.pushNamed(context, "/FormPagePage");
 
                   },
@@ -48,7 +46,6 @@
                   focusElevation: 40,
                   child: Text('ScrollerView', style: TextStyle(color: Colors.white)),
                   onPressed: () {
-                    //跳转 RaisedButtonPage 界面
                     Navigator.pushNamed(context, "/ScrollerViewPage");
 
                   },
@@ -62,8 +59,19 @@
                   focusElevation: 40,
                   child: Text('Dialog', style: TextStyle(color: Colors.white)),
                   onPressed: () {
-                    //跳转 RaisedButtonPage 界面
                     Navigator.pushNamed(context, "/DialogPage");
+
+                  },
+                ),
+                SizedBox(height: 10),
+
+                RaisedButton(
+                  elevation: 20,
+                  color: Colors.deepPurple,
+                  focusElevation: 40,
+                  child: Text('数据持久化', style: TextStyle(color: Colors.white)),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/PersistenPage");
 
                   },
                 ),

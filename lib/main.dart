@@ -1,25 +1,24 @@
       import 'package:flutter/material.dart';
-      import 'package:flutter_learn/util/UserHelper.dart';
+      import 'package:flutter_learn/util/Global.dart';
       import 'route/Routes.dart';
 
 
       void main(){
 
-        var userHelper = UserHelper();
-        var userHelper1 = UserHelper();
-        var userHelper2 =  UserHelper.instance;
+        runApp(MyApp());
 
-        print("------------> 对象：'${userHelper.hashCode} 相等  '+${identical(userHelper, userHelper1)}"); //true
-        print("------------> 对象：'${userHelper1.hashCode} 相等  '+${identical(userHelper, userHelper2)}"); //true
-        print("------------> 对象：'${userHelper2.hashCode} 相等  '+${identical(userHelper1, userHelper2)}"); //true
+        //初始化 sp
+        Global.initPreferences();
 
-       // runApp(MyApp());
+        //初始化文件
+        Global.initFile();
       }
 
       class MyApp extends StatelessWidget {
 
         @override
         Widget build(BuildContext context) {
+
           return MaterialApp(
 
               //去掉debug图标
