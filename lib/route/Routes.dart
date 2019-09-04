@@ -4,6 +4,7 @@
       import 'package:flutter_learn/page/TabBarControllerPage.dart';
       import 'package:flutter_learn/page/Tabs.dart';
       import 'package:flutter_learn/page/button/RaisedButtonPage.dart';
+      import 'package:flutter_learn/page/database/DataBasePage.dart';
       import 'package:flutter_learn/page/dialog/DialogPage.dart';
       import 'package:flutter_learn/page/form/FormPage.dart';
       import 'package:flutter_learn/page/persistence/PersistenPage.dart';
@@ -32,6 +33,8 @@
         '/DialogPage':(context)=>DialogPage(),
 
         '/PersistenPage':(context)=>PersistenPage(),
+
+        '/DataBasePage':(context)=>DataBasePage(),
       };
 
       //优化后

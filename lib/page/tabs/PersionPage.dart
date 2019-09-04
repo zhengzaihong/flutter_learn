@@ -69,10 +69,21 @@
                   elevation: 20,
                   color: Colors.deepPurple,
                   focusElevation: 40,
-                  child: Text('数据持久化', style: TextStyle(color: Colors.white)),
+                  child: Text('Sp和读写文件方式持久化', style: TextStyle(color: Colors.white)),
                   onPressed: () {
                     Navigator.pushNamed(context, "/PersistenPage");
+                  },
+                ),
 
+                SizedBox(height: 10),
+
+                RaisedButton(
+                  elevation: 20,
+                  color: Colors.deepPurple,
+                  focusElevation: 40,
+                  child: Text('数据库', style: TextStyle(color: Colors.white)),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/DataBasePage");
                   },
                 ),
               ],

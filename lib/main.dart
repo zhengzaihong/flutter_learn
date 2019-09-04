@@ -12,6 +12,7 @@
 
         //初始化文件
         Global.initFile();
+
       }
 
       class MyApp extends StatelessWidget {
