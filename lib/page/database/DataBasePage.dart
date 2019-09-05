@@ -66,6 +66,15 @@
       }
 
       @override
+      void dispose() {
+        super.dispose();
+        //关闭数据库
+        sqlUserHelper?.close();
+        sqlUserHelper = null;
+
+      }
+
+      @override
       Widget build(BuildContext context) {
         return Padding(
           padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
@@ -105,7 +114,7 @@
                         return v.trim().length > 0 ? null : "密码不能为空";
                       }),
                   Padding(
-                      padding: const EdgeInsets.only(top: 28.0),
+                      padding:  EdgeInsets.only(top: 28.0),
                       child: Column(
                         children: <Widget>[
                           Row(
@@ -119,9 +128,9 @@
                                   FormState state = (_formKey.currentState as FormState);
                                   if (state.validate()) {
                                     //构建一个user 对象
-                                    UserInfo user = UserInfo(name: userName,password: userPass,age: age);
+                                     UserInfo user = UserInfo(name: userName,password: userPass,age: age);
                                     //向数据库插入该条数据
-                                    sqlUserHelper.insert(user).then((value){
+                                     sqlUserHelper.insert(user).then((value){
                                       print("the last insert id $value");
                                     });
                                   }
@@ -155,7 +164,7 @@
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 28.0),
+                    padding:  EdgeInsets.only(top: 28.0),
                     child: Column(
                       children: <Widget>[
                         Row(
@@ -169,7 +178,7 @@
                                 FormState state = (_formKey.currentState as FormState);
                                 if (state.validate()) {
                                   ///查询全部
-                                  sqlUserHelper.query().then((value){
+                                   sqlUserHelper.query().then((value){
                                     print("the query info  ${value.toString()}");
                                   });
                                 }
@@ -198,7 +207,7 @@
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 28.0),
+                    padding:  EdgeInsets.only(top: 28.0),
                     child: Column(
                       children: <Widget>[
                         Row(
@@ -230,8 +239,8 @@
                                 FormState state = (_formKey.currentState as FormState);
                                 if (state.validate()) {
                                   UserInfo user = UserInfo(name: userName,password: userPass,age: age);
-                                  sqlUserHelper.rawUpdate(user, 1).then((value){
-                                    print("the rawQuery info  ${value.toString()}");
+                                  sqlUserHelper.rawUpdate(user, 2).then((value){
+                                    print("the rawUpdate info  ${value.toString()}");
                                   });
                                 }
                               },
@@ -243,7 +252,7 @@
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 28.0),
+                    padding: EdgeInsets.only(top: 28.0),
                     child: Column(
                       children: <Widget>[
                         Row(
@@ -274,9 +283,65 @@
                                 FormState state = (_formKey.currentState as FormState);
                                 if (state.validate()) {
                                   /// 根据 id 删除
-                                  sqlUserHelper.rawDelete( 1).then((value){
+                                  sqlUserHelper.rawDelete( 2).then((value){
                                     print("the rawDelete info  ${value.toString()}");
                                   });
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.only(top: 28.0),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            RaisedButton(
+                              padding: EdgeInsets.all(15.0),
+                              child: Text("事务添加两条数据"),
+                              color: Colors.blue,
+                              textColor: Colors.white,
+                              onPressed: () {
+                                FormState state = (_formKey.currentState as FormState);
+                                if (state.validate()) {
+
+                                  //构建两个用户对象
+
+                                  UserInfo user1 = UserInfo(name: "zhengxian",password: "123456",age: 18);
+                                  
+                                  UserInfo user2 = UserInfo(name: "zzh",password: "123456",age: 20);
+                                  
+                                  sqlUserHelper.transactionInsert(user1, user2).then((value){
+                                      print("transaction result: $value");
+                                  });
+
+                                }
+                              },
+                            ),
+
+                            SizedBox(width: 10,),
+                            RaisedButton(
+                              padding: EdgeInsets.all(15.0),
+                              child: Text("批处理"),
+                              color: Colors.blue,
+                              textColor: Colors.white,
+                              onPressed: () {
+                                FormState state = (_formKey.currentState as FormState);
+                                if (state.validate()) {
+
+                                  UserInfo user1 = UserInfo(name: "zhengxian",password: "123456",age: 18);
+
+                                  UserInfo user2 = UserInfo(name: "LiShi",password: "123456",age: 55);
+
+                                  sqlUserHelper.batch( user1,user2).then((value){
+                                    print("the batch info  ${value.toString()}");
+                                  });
+
                                 }
                               },
                             ),

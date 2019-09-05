@@ -15,7 +15,7 @@ class UserInfo{
   int age;
 
 
-  UserInfo({this.name,this.age,this.password});
+  UserInfo({this.name,this.password,this.age});
 
 
   UserInfo.toUser(Map<String, dynamic> json) {
@@ -23,7 +23,6 @@ class UserInfo{
     age = json['age'];
     password = json['password'];
   }
-
 
 
   Map<String, dynamic> toMap() {
