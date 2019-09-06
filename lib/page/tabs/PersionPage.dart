@@ -86,6 +86,17 @@
                     Navigator.pushNamed(context, "/DataBasePage");
                   },
                 ),
+                SizedBox(height: 10),
+
+                RaisedButton(
+                  elevation: 20,
+                  color: Colors.deepPurple,
+                  focusElevation: 40,
+                  child: Text('Pop弹窗', style: TextStyle(color: Colors.white)),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/PopViewPage");
+                  },
+                ),
               ],
             ),
           );

@@ -8,6 +8,7 @@
       import 'package:flutter_learn/page/dialog/DialogPage.dart';
       import 'package:flutter_learn/page/form/FormPage.dart';
       import 'package:flutter_learn/page/persistence/PersistenPage.dart';
+      import 'package:flutter_learn/page/pop/PopViewPage.dart';
       import 'package:flutter_learn/page/scrollview/ScrollerViewPage.dart';
 
 
@@ -35,6 +36,8 @@
         '/PersistenPage':(context)=>PersistenPage(),
 
         '/DataBasePage':(context)=>DataBasePage(),
+
+        '/PopViewPage':(context)=>PopViewPage(),
       };
 
       //优化后
