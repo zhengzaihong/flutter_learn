@@ -288,6 +288,7 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
     this.theme,
     this.alwaysBottom = true,
     this.marginTop,
+    this.drawPadding,
     @required this.style,
     this.barrierLabel,
   }) : assert(style != null);
@@ -301,6 +302,7 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
   final TextStyle style;
   final bool alwaysBottom;
   final double marginTop;
+  final double drawPadding;
 
   ScrollController scrollController;
 
@@ -332,6 +334,7 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
             style: style,
             alwaysBottom: alwaysBottom,
             marginTop: marginTop,
+            drawPadding:drawPadding,
           );
         }
     );
@@ -356,6 +359,7 @@ class _DropdownRoutePage<T> extends StatelessWidget {
     this.style,
     this.alwaysBottom = true,
     this.marginTop,
+    this.drawPadding,
   }) : super(key: key);
 
   final _DropdownRoute<T> route;
@@ -369,6 +373,7 @@ class _DropdownRoutePage<T> extends StatelessWidget {
   final TextStyle style;
   final bool alwaysBottom;
   final double marginTop;
+  final double drawPadding;
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasDirectionality(context));
@@ -580,6 +585,7 @@ class ExpandDropdownButton<T> extends StatefulWidget {
     this.isExpanded = false,
     this.alwaysBottom = true,
     this.marginTop,
+    this.drawPadding=0,
   }) : assert(items == null || items.isEmpty || value == null || items.where((DropdownMenuItem<T> item) => item.value == value).length == 1),
         assert(elevation != null),
         assert(iconSize != null),
@@ -680,8 +686,10 @@ class ExpandDropdownButton<T> extends StatefulWidget {
   final bool alwaysBottom;
 
   final double marginTop;
+
+  final double drawPadding;
   @override
-  _DropdownButtonState<T> createState() => _DropdownButtonState<T>(alwaysBottom,marginTop);
+  _DropdownButtonState<T> createState() => _DropdownButtonState<T>(alwaysBottom,marginTop,drawPadding);
 }
 
 class _DropdownButtonState<T> extends State<ExpandDropdownButton<T>> with WidgetsBindingObserver {
@@ -691,8 +699,9 @@ class _DropdownButtonState<T> extends State<ExpandDropdownButton<T>> with Widget
 
   bool alwaysBottom = true;
   double marginTop =0;
+  double drawPadding = 0;
 
-  _DropdownButtonState(this.alwaysBottom,this.marginTop);
+  _DropdownButtonState(this.alwaysBottom,this.marginTop,this.drawPadding);
 
   @override
   void initState() {
@@ -763,6 +772,7 @@ class _DropdownButtonState<T> extends State<ExpandDropdownButton<T>> with Widget
       style: _textStyle,
       marginTop: marginTop,
       alwaysBottom: alwaysBottom,
+      drawPadding:drawPadding,
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
     );
 
@@ -873,19 +883,8 @@ class _DropdownButtonState<T> extends State<ExpandDropdownButton<T>> with Widget
                 size: widget.iconSize,
               ),
               child: Container(
-
-                padding: EdgeInsets.only(left: 140),
+                padding: EdgeInsets.only(left: drawPadding),
                 child: widget.icon ?? defaultIcon,
-//                child: Stack(
-//                  children: <Widget>[
-//                    Positioned(
-//                      left: 0.0,
-//                      right: 0.0,
-//                      bottom: 0.0,
-//                      child: widget.icon ?? defaultIcon,
-//                    ),
-//                  ],
-//                ),
               )
             ),
           ],
@@ -894,7 +893,7 @@ class _DropdownButtonState<T> extends State<ExpandDropdownButton<T>> with Widget
     );
 
     if (!DropdownButtonHideUnderline.at(context)) {
-      final double bottom = widget.isDense ? 0.0 : 0.0;
+      final double bottom = widget.isDense ? 0.0 : 8.0;
       result = Stack(
         children: <Widget>[
           result,
