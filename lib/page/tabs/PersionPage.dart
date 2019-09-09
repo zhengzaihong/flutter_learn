@@ -14,20 +14,20 @@
             width: double.infinity,
             child: Column(
               children: <Widget>[
-                SizedBox(height: 20),
+                SizedBox(height: 5),
                 RaisedButton(
                   color: Colors.deepPurple,
-                  elevation: 20,
+                  elevation: 5,
                   focusElevation: 40,
                   child: Text('常用Button', style: TextStyle(color: Colors.white)),
                   onPressed: () {
                     Navigator.pushNamed(context, "/RaisedButtonPage");
                   },
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
 
                 RaisedButton(
-                  elevation: 20,
+                  elevation: 5,
                   color: Colors.deepPurple,
                   focusElevation: 40,
                   child: Text('常用表单组件', style: TextStyle(color: Colors.white)),
@@ -38,10 +38,10 @@
                 ),
 
 
-                SizedBox(height: 10),
+                SizedBox(height: 5),
 
                 RaisedButton(
-                  elevation: 20,
+                  elevation: 5,
                   color: Colors.deepPurple,
                   focusElevation: 40,
                   child: Text('ScrollerView', style: TextStyle(color: Colors.white)),
@@ -51,10 +51,10 @@
                   },
                 ),
 
-                SizedBox(height: 10),
+                SizedBox(height: 5),
 
                 RaisedButton(
-                  elevation: 20,
+                  elevation: 5,
                   color: Colors.deepPurple,
                   focusElevation: 40,
                   child: Text('Dialog', style: TextStyle(color: Colors.white)),
@@ -63,10 +63,10 @@
 
                   },
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
 
                 RaisedButton(
-                  elevation: 20,
+                  elevation: 5,
                   color: Colors.deepPurple,
                   focusElevation: 40,
                   child: Text('Sp和读写文件方式持久化', style: TextStyle(color: Colors.white)),
@@ -75,10 +75,10 @@
                   },
                 ),
 
-                SizedBox(height: 10),
+                SizedBox(height: 5),
 
                 RaisedButton(
-                  elevation: 20,
+                  elevation: 5,
                   color: Colors.deepPurple,
                   focusElevation: 40,
                   child: Text('数据库', style: TextStyle(color: Colors.white)),
@@ -86,15 +86,26 @@
                     Navigator.pushNamed(context, "/DataBasePage");
                   },
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
 
                 RaisedButton(
-                  elevation: 20,
+                  elevation: 5,
                   color: Colors.deepPurple,
                   focusElevation: 40,
                   child: Text('Pop弹窗', style: TextStyle(color: Colors.white)),
                   onPressed: () {
                     Navigator.pushNamed(context, "/PopViewPage");
+                  },
+                ),
+
+                SizedBox(height: 5),
+                RaisedButton(
+                  elevation: 5,
+                  color: Colors.deepPurple,
+                  focusElevation: 40,
+                  child: Text('时间picker', style: TextStyle(color: Colors.white)),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/TimePickerPage");
                   },
                 ),
               ],

@@ -10,6 +10,7 @@
       import 'package:flutter_learn/page/persistence/PersistenPage.dart';
       import 'package:flutter_learn/page/pop/PopViewPage.dart';
       import 'package:flutter_learn/page/scrollview/ScrollerViewPage.dart';
+      import 'package:flutter_learn/page/time/TimePickerPage.dart';
 
 
       //配置路由
@@ -38,6 +39,9 @@
         '/DataBasePage':(context)=>DataBasePage(),
 
         '/PopViewPage':(context)=>PopViewPage(),
+
+        '/TimePickerPage':(context)=>TimePickerPage(),
+
       };
 
       //优化后

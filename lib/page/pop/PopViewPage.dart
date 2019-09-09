@@ -22,12 +22,16 @@ class _PopViewPageState extends State<PopViewPage> {
         onPressed: () {
           showMenu(
               context: context,
-              position: RelativeRect.fromSize(Rect.fromLTRB(150, 130, 0, 0),Size(100, 200)),
+              position: RelativeRect.fromSize(
+                  Rect.fromLTRB(150, 130, 0, 0), Size(100, 200)),
               elevation: 10,
               items: <PopupMenuItem<String>>[
-                PopupMenuItem<String>(value: 'Item01', child: Text('Item One'),
+                PopupMenuItem<String>(
+                  value: 'Item01',
+                  child: Text('Item One'),
                 ),
-                PopupMenuItem<String>(value: 'Item02', child: Text('Item Two SFDFDGDGDGG')),
+                PopupMenuItem<String>(
+                    value: 'Item02', child: Text('Item Two SFDFDGDGDGG')),
                 PopupMenuItem<String>(
                     value: 'Item03', child: Text('Item Three')),
                 PopupMenuItem<String>(value: 'Item04', child: Text('Item Four'))
@@ -54,58 +58,67 @@ class _PopViewPageState extends State<PopViewPage> {
             children: <Widget>[
               raisedButton,
               SizedBox(height: 20),
+              //使用一个父组件包裹  DropdownButton
               Container(
+                  width: 100,
                   child: DropdownButton<String>(
-                value: content,
-                iconDisabledColor: Colors.blue,
-                iconEnabledColor: Colors.yellow,
-                underline: Container(
-                  color: Colors.red,
-                  height: 1,
-                ),
-                onChanged: (String value) {
-                  setState(() {
-                    content = value;
-                  });
-                },
-                items: <String>["One", 'Two', 'Free', 'Four']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              )),
-//              SizedBox(height: 20),
-//              Container(
-//                  child: ExpandDropdownButton<String>(
-//                value: content,
-//                alwaysBottom: true,
-//                marginTop: 10,
-//                drawPadding: 40,
-//                icon: Icon(
-//                  Icons.arrow_drop_down,
-//                  size: 20,
-//                ),
-//                iconDisabledColor: Colors.blue,
-//                iconEnabledColor: Colors.yellow,
-//                underline: Container(
-//                  color: Colors.red,
-//                  height: 1,
-//                ),
-//                onChanged: (value) {
-//                  setState(() {
-//                    content1 = value;
-//                  });
-//                },
-//                items: <String>[content, 'Two', 'Free', 'Four']
-//                    .map<DropdownMenuItem<String>>((String value) {
-//                  return DropdownMenuItem<String>(
-//                    value: value,
-//                    child: Text(value),
-//                  );
-//                }).toList(),
-//              )),
+                    value: content,
+                    //填充父组件
+                    isExpanded: true,
+                    iconEnabledColor: Colors.yellow,
+                    //添加下划线
+                    underline: Container(
+                      color: Colors.red,
+                      height: 1,
+                    ),
+                    //监听改变的值
+                    onChanged: (String value) {
+                      setState(() {
+                        content = value;
+                      });
+                    },
+                    items: <String>["One", 'Two', 'Free', 'Four']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )),
+              SizedBox(height: 20),
+              Container(
+                  child: ExpandDropdownButton<String>(
+                    value: content1,
+                    //总是在底部显示
+                    alwaysBottom: true,
+                    //距离 button 10个单位间距
+                    marginTop: 10,
+                    //文字和图标内距40个单位
+                    drawPadding: 40,
+                    icon: Icon(
+                      Icons.arrow_drop_down,
+                      size: 20,
+                    ),
+                    iconDisabledColor: Colors.blue,
+                    iconEnabledColor: Colors.yellow,
+                    underline: Container(
+                      color: Colors.red,
+                      height: 1,
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        content1 = value;
+                        ToastUtil.show(content);
+                      });
+                    },
+                    items: <String>["One", 'Two', 'Free', 'Four']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )),
             ],
           ),
         ));

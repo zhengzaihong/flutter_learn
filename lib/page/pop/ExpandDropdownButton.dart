@@ -357,7 +357,7 @@ class _DropdownRoutePage<T> extends StatelessWidget {
     this.elevation = 8,
     this.theme,
     this.style,
-    this.alwaysBottom = true,
+    this.alwaysBottom = false,
     this.marginTop,
     this.drawPadding,
   }) : super(key: key);
@@ -391,8 +391,9 @@ class _DropdownRoutePage<T> extends StatelessWidget {
     final double bottomLimit = math.max(availableHeight - _kMenuItemHeight, buttonBottom);
 
     double selectedItemOffset;
+
     if(alwaysBottom){
-        selectedItemOffset = (buttonRect.height + marginTop) * -1;
+      selectedItemOffset = (buttonRect.height + marginTop) * -1;
     }else{
       selectedItemOffset = selectedIndex * _kMenuItemHeight + kMaterialListPadding.top;
     }

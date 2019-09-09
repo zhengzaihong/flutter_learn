@@ -33,8 +33,8 @@
               body: this._pageList[this._currentIndex],
 
               floatingActionButton:Container(
-                height: 80,
-                width: 80,
+                height: 65,
+                width: 65,
                 //实现一个圆形
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
@@ -67,7 +67,6 @@
                 ),
               ),
             ),
-
               // 第七章演示
               // drawer: LeftDrawerUserAccountsDrawerHeader(),
               // drawer: LeftDrawerHeader(),
@@ -90,17 +89,17 @@
                     });
                 },
                 //icon的大小
-                iconSize:36.0,
+                iconSize:28.0,
                 //选中的颜色
                 fixedColor:Colors.red,
 
-                selectedFontSize: 18,
+                selectedFontSize: 16,
 
                 selectedLabelStyle: TextStyle(color: Colors.red),
 
                 // selectedItemColor: Colors.red, 和 fixedColor互斥
 
-                unselectedFontSize: 18,
+                unselectedFontSize: 16,
 
                 unselectedItemColor:Colors.deepPurple ,
 
