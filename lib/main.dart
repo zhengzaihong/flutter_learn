@@ -1,7 +1,7 @@
       import 'package:flutter/material.dart';
       import 'package:flutter_learn/util/Global.dart';
+      import 'package:flutter_localizations/flutter_localizations.dart';
       import 'route/Routes.dart';
-
 
       void main(){
 
@@ -13,6 +13,7 @@
         //初始化文件
         Global.initFile();
 
+
       }
 
       class MyApp extends StatelessWidget {
@@ -21,6 +22,17 @@
         Widget build(BuildContext context) {
 
           return MaterialApp(
+
+              //国际化配置
+              localizationsDelegates: [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
+              supportedLocales: [
+                //配置语种
+                const Locale('zh', 'CH'),
+                const Locale('en', 'US'),
+              ],
 
               //去掉debug图标
               debugShowCheckedModeBanner:false ,
