@@ -45,7 +45,7 @@
       };
 
       //优化后
-      // ignore: strong_mode_top_level_function_literal_block
+      // ignore: strong_mode_top_level_function_literal_block, top_level_function_literal_block
       var onGenerateRoute=(RouteSettings settings) {
         // 统一处理
         final String name = settings.name;
