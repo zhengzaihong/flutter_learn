@@ -20,6 +20,10 @@ dependencies:
   fluttertoast: ^3.0.3
   flutter:
     sdk: flutter
+
+  #添加 WebView 插件
+  webview_flutter: ^0.3.15+1
+
   #添加持久化插件 sp
   shared_preferences: ^0.5.3+1
   #添加文件库
@@ -59,10 +63,13 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
+
+
   assets:
     - images/mm.jpg
     - images/2.0x/mm.jpg
     - images/3.0x/mm.jpg
+    - assets/html/JavaScriptTest.html
 
 
 
