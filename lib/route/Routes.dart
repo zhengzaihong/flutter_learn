@@ -11,6 +11,7 @@
       import 'package:flutter_learn/page/pop/PopViewPage.dart';
       import 'package:flutter_learn/page/scrollview/ScrollerViewPage.dart';
       import 'package:flutter_learn/page/time/TimePickerPage.dart';
+      import 'package:flutter_learn/page/webview/WebViewPage.dart';
 
 
       //配置路由
@@ -41,6 +42,8 @@
         '/PopViewPage':(context)=>PopViewPage(),
 
         '/TimePickerPage':(context)=>TimePickerPage(),
+
+        '/WebViewPage':(context)=>WebViewPage(),
 
       };
 

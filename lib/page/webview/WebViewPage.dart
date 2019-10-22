@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_learn/util/ToastUtil.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -21,87 +23,92 @@ class WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
 
-    // 使用 IOS 风格
-    return CupertinoPageScaffold(
+    return Scaffold(
 
-      navigationBar: CupertinoNavigationBar(
+      ///FloatingActionButton
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        child: Icon(
+          Icons.send,
+          size: 30,
+        ),
+        onPressed: () {
+          //点击触发 调用 js 方法
+          _controller.evaluateJavascript("flutterCallJs('这是客户端传过来的值')");
 
-      //添加一个标题
-        middle: Text("$_title"),
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
+      appBar: AppBar(
+        title: Text(_title),
+        // 控制 WebView 返回（依次返回界面）
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back,color: Colors.white,),
+          onPressed:(){
+
+            _controller.canGoBack().then((value){
+
+              if(value){
+                _controller.goBack();
+              }else{
+                 Navigator.pop(context);
+              }
+            });
+          },
+        )
       ),
 
-      child: SafeArea(
+      body: SafeArea(
 
           child: WebView(
-            initialUrl: "127.0.0.1:///assets/html/JavaScriptTest.html",
+            
+            initialUrl: "http://www.baidu.com",
             //开启Js 支持
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
               //拿到controller
               _controller = controller;
+
+            //  _loadHtmlFromAssets();
             },
             onPageFinished: (url) {
+
               //获取网页的标题来显示
               _controller.evaluateJavascript("document.title").then((result) {
                 setState(() {
                   _title = result;
                 });
-              }
-              );
+              });
               print("输出当前地址：" + url);
             },
-            navigationDelegate: (NavigationRequest request) {
-              //拦截 百度账号登录跳转
-              if (request.url.startsWith(
-                  "https://wappass.baidu.com/passport/?login")) {
-                ToastUtil.show("请求被拦截到诺  哈哈");
 
-                return NavigationDecision.prevent;
-              }
-              return NavigationDecision.navigate;
-            },
+            javascriptChannels: <JavascriptChannel>[
+              JavascriptChannel(
+
+                  // 双方约定好的 协议
+                  name: "flutterTest",
+                  onMessageReceived: (JavascriptMessage message) {
+
+                    print("输出参数： ${message.message}");
+                    ToastUtil.show(message.message);
+
+                  }
+              ),
+            ].toSet(),
           )
       ),
     );
   }
 
+//  从本地加载html文件，需要使用异步操作
+  _loadHtmlFromAssets() async {
 
+    String fileText = await rootBundle.loadString('assets/html/JavaScriptTest.html');
 
-  Widget getWebView(){
+    _controller.loadUrl(Uri.dataFromString(fileText, mimeType: 'text/html', encoding: Encoding.getByName('utf-8')).toString());
 
-    return WebView(
-      initialUrl: "https://flutterchina.club/",
-      //JS执行模式 是否允许JS执行
-      javascriptMode: JavascriptMode.unrestricted,
-      onWebViewCreated: (controller) {
-        _controller = controller;
-      },
-      onPageFinished: (url) {
-        _controller.evaluateJavascript("document.title").then((result){
-          setState(() {
-            _title = result;
-          });
-        }
-        );
-      },
-      navigationDelegate: (NavigationRequest request) {
-        if(request.url.startsWith("myapp://")) {
-          print("即将打开 ${request.url}");
-
-          return NavigationDecision.prevent;
-        }
-        return NavigationDecision.navigate;
-      } ,
-      javascriptChannels: <JavascriptChannel>[
-        JavascriptChannel(
-            name: "share",
-            onMessageReceived: (JavascriptMessage message) {
-              print("参数： ${message.message}");
-            }
-        ),
-      ].toSet(),
-
-    );
   }
+
 
 }

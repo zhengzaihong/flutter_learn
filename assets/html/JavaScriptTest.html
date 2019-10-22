@@ -1,0 +1,27 @@
+<html lang="zh-CN">
+
+    <p id='testContent'>hello world</p>
+
+    <head>
+        <title>测试网页</title>
+    </head>
+
+    <body>
+
+    <p>这是一段很长很长的故事..... </p>
+
+    </body>
+
+    <!-- 提供给flutter 调用的方法   -->
+
+    <script>
+
+        function flutterCallJs(message){
+            document.getElementById("testContent").innerHTML = message
+        }
+    </script>
+
+    <!-- 点击按钮将 文本信息传给 flutter   -->
+    <button onclick="flutterTest.postMessage('来自js的传值！')">发送数据给客户端</button>
+
+</html>
