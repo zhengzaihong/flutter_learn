@@ -1,4 +1,6 @@
-      import 'package:flutter/material.dart';
+      import 'dart:isolate';
+
+import 'package:flutter/material.dart';
       import 'package:flutter_learn/util/Global.dart';
       import 'package:flutter_localizations/flutter_localizations.dart';
       import 'route/Routes.dart';
@@ -12,7 +14,6 @@
 
         //初始化文件
         Global.initFile();
-
 
       }
 

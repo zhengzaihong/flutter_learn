@@ -7,6 +7,7 @@
       import 'package:flutter_learn/page/database/DataBasePage.dart';
       import 'package:flutter_learn/page/dialog/DialogPage.dart';
       import 'package:flutter_learn/page/form/FormPage.dart';
+      import 'package:flutter_learn/page/isolate/IsolatePage.dart';
       import 'package:flutter_learn/page/persistence/PersistenPage.dart';
       import 'package:flutter_learn/page/pop/PopViewPage.dart';
       import 'package:flutter_learn/page/scrollview/ScrollerViewPage.dart';
@@ -44,6 +45,8 @@
         '/TimePickerPage':(context)=>TimePickerPage(),
 
         '/WebViewPage':(context)=>WebViewPage(),
+
+        '/IsolatePage':(context)=>IsolatePage(),
 
       };
 

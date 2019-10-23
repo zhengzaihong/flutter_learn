@@ -12,6 +12,7 @@
           return Container(
             color: Colors.blue,
             width: double.infinity,
+            padding: EdgeInsets.only(bottom: 30),
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
@@ -34,7 +35,6 @@
                     child: Text('常用表单组件', style: TextStyle(color: Colors.white)),
                     onPressed: () {
                       Navigator.pushNamed(context, "/FormPagePage");
-
                     },
                   ),
 
@@ -117,6 +117,18 @@
                     child: Text('WebView', style: TextStyle(color: Colors.white)),
                     onPressed: () {
                       Navigator.pushNamed(context, "/WebViewPage");
+                    },
+                  ),
+
+
+                  SizedBox(height: 5),
+                  RaisedButton(
+                    elevation: 5,
+                    color: Colors.deepPurple,
+                    focusElevation: 40,
+                    child: Text('IsolatePage', style: TextStyle(color: Colors.white)),
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/IsolatePage");
                     },
                   ),
                 ],
