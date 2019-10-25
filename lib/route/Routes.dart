@@ -12,6 +12,7 @@
       import 'package:flutter_learn/page/pop/PopViewPage.dart';
       import 'package:flutter_learn/page/scrollview/ScrollerViewPage.dart';
       import 'package:flutter_learn/page/time/TimePickerPage.dart';
+      import 'package:flutter_learn/page/websocket/WebSocketPage.dart';
       import 'package:flutter_learn/page/webview/WebViewPage.dart';
 
 
@@ -47,6 +48,8 @@
         '/WebViewPage':(context)=>WebViewPage(),
 
         '/IsolatePage':(context)=>IsolatePage(),
+
+        '/WebSocketPage':(context)=>WebSocketPage(),
 
       };
 

@@ -21,6 +21,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #添加websocket 插件
+  web_socket_channel: ^1.1.0
+
   #添加 WebView 插件
   webview_flutter: ^0.3.15+1
 

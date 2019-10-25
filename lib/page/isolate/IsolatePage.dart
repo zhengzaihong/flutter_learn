@@ -1,9 +1,9 @@
 import 'dart:isolate';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/page/dialog/LoadingViewDialog.dart';
-import 'package:flutter_learn/util/ToastUtil.dart';
 
 class IsolatePage extends StatefulWidget{
 
@@ -14,18 +14,17 @@ class IsolatePage extends StatefulWidget{
 }
 
 
-
-
 class IsolatePageState extends State<IsolatePage> {
 
   var content = "计算中...";
 
 
   static Future<dynamic> calculation(int n) async{
+
     //首先创建一个ReceivePort，因为创建isolate所需的参数，必须要有SendPort，SendPort需要ReceivePort来创建
     final response = new ReceivePort();
     //开始创建isolate,createIsolate是创建isolate必须要的参数。
-    await Isolate.spawn(createIsolate,response.sendPort);
+    Isolate isolate = await Isolate.spawn(createIsolate,response.sendPort);
 
     //获取sendPort来发送数据
     final sendPort = await response.first as SendPort;
@@ -33,6 +32,7 @@ class IsolatePageState extends State<IsolatePage> {
     final answer = new ReceivePort();
     //发送数据
     sendPort.send([n,answer.sendPort]);
+
     //获得数据并返回
     return answer.first;
   }
@@ -63,6 +63,9 @@ class IsolatePageState extends State<IsolatePage> {
     return count;
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -74,7 +77,14 @@ class IsolatePageState extends State<IsolatePage> {
         elevation: 0,
         child: Text('计算'),
         onPressed: () {
-          calculation(100000000).then((onValue){
+
+//          calculation(100000000).then((onValue){
+//            setState(() {
+//              content = "总和$onValue";
+//              print("计算结果：$onValue");
+//            });
+
+          compute(sum,100000000).then((onValue){
             setState(() {
               content = "总和$onValue";
               print("计算结果：$onValue");

@@ -131,6 +131,16 @@
                       Navigator.pushNamed(context, "/IsolatePage");
                     },
                   ),
+                  SizedBox(height: 5),
+                  RaisedButton(
+                    elevation: 5,
+                    color: Colors.deepPurple,
+                    focusElevation: 40,
+                    child: Text('WebSocketPage', style: TextStyle(color: Colors.white)),
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/WebSocketPage");
+                    },
+                  ),
                 ],
               ),
             )
