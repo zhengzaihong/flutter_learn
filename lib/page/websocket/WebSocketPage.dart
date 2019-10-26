@@ -21,17 +21,17 @@ class _WebSocketPageState extends State<WebSocketPage> {
   HtmlWebSocketChannel htmlWebSocketChannel;
   var sendContent = "";
 
+
   @override
   void initState() {
     super.initState();
-
 
     //添加监听
     sendController.addListener(() {
       sendContent = sendController.text;
     });
 
-    //c创建对象 并建立连接
+    //创建对象 并建立连接
     channel = IOWebSocketChannel.connect('ws://echo.websocket.org');
   }
 

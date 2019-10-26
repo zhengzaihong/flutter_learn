@@ -429,7 +429,7 @@
                     }),
                 // 登录按钮
                 Padding(
-                  padding: const EdgeInsets.only(top: 28.0),
+                  padding: EdgeInsets.only(top: 28.0),
                   child: Row(
                     children: <Widget>[
                       Expanded(
