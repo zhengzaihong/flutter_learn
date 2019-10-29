@@ -1,8 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/html.dart';
-
 import 'package:web_socket_channel/io.dart';
 
 class WebSocketPage extends StatefulWidget {
@@ -13,14 +9,11 @@ class WebSocketPage extends StatefulWidget {
 class _WebSocketPageState extends State<WebSocketPage> {
 
   TextEditingController sendController = new TextEditingController();
-  TextEditingController reciverController = new TextEditingController();
 
   //声明一个句柄
   IOWebSocketChannel channel;
 
-  HtmlWebSocketChannel htmlWebSocketChannel;
   var sendContent = "";
-
 
   @override
   void initState() {
@@ -63,6 +56,7 @@ class _WebSocketPageState extends State<WebSocketPage> {
                     child: Text("发送"),
                     onPressed: () {
                       if (sendContent.isNotEmpty) {
+                        // 将要发送的数据添加到数据池中
                         channel.sink.add(sendContent);
                       }
                     },
@@ -72,7 +66,8 @@ class _WebSocketPageState extends State<WebSocketPage> {
             ),
             SizedBox(height: 30),
 
-            Text("来自另个程序的信息"),
+
+            Text("来自服务端的信息"),
             StreamBuilder(
               stream: channel.stream,
               builder: (context, snapshot) {
@@ -81,8 +76,9 @@ class _WebSocketPageState extends State<WebSocketPage> {
                 if (snapshot.hasError) {
                   backContent = "网络不通...";
                 } else if (snapshot.hasData) {
-                  backContent = "收到内容: " + snapshot.data;
+                  backContent = "收到内容回声: " + snapshot.data;
                 }
+
                 return Padding(
                   padding: EdgeInsets.symmetric(vertical: 24.0),
                   child: Text(backContent),
@@ -97,7 +93,8 @@ class _WebSocketPageState extends State<WebSocketPage> {
 
   @override
   void dispose() {
-    channel.sink.close();
     super.dispose();
+    //关闭通道
+    channel.sink.close();
   }
 }
