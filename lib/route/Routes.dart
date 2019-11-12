@@ -5,6 +5,7 @@
       import 'package:flutter_learn/page/Tabs.dart';
       import 'package:flutter_learn/page/button/RaisedButtonPage.dart';
       import 'package:flutter_learn/page/database/DataBasePage.dart';
+      import 'package:flutter_learn/page/Inherited/DataShardPage.dart';
       import 'package:flutter_learn/page/dialog/DialogPage.dart';
       import 'package:flutter_learn/page/form/FormPage.dart';
       import 'package:flutter_learn/page/isolate/IsolatePage.dart';
@@ -50,6 +51,8 @@
         '/IsolatePage':(context)=>IsolatePage(),
 
         '/WebSocketPage':(context)=>WebSocketPage(),
+
+        '/DataShardPage':(context)=>DataShardPage(),
 
       };
 

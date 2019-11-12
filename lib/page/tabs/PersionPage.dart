@@ -141,6 +141,16 @@
                       Navigator.pushNamed(context, "/WebSocketPage");
                     },
                   ),
+                  SizedBox(height: 5),
+                  RaisedButton(
+                    elevation: 5,
+                    color: Colors.deepPurple,
+                    focusElevation: 40,
+                    child: Text('数据共享', style: TextStyle(color: Colors.white)),
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/DataShardPage");
+                    },
+                  ),
                 ],
               ),
             )
