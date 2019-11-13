@@ -20,7 +20,6 @@ class MyInheritedWidget extends InheritedWidget {
   }) : super(key: key, child: child);
 
 
-
   //是否重建widget就取决于数据是否相同
   @override
   bool updateShouldNotify(MyInheritedWidget oldWidget) {

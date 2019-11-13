@@ -13,7 +13,8 @@ class _WidgetTestPageTwoState extends State<WidgetTestPageTwo> {
   @override
   Widget build(BuildContext context) {
 
-    final inheritedWidgetManger = InheritedWidgetManger.of(context,rebuild: false);
+    //可控制的
+    final inheritedWidgetManger = InheritedWidgetManger.of(context,rebuild: true);
 
     final inheritedTestModel = inheritedWidgetManger.data;
 

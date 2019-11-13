@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'InheritedWidgetManger.dart';
 
 // 第一个页面
 class WidgetTestPageOne extends StatefulWidget {
@@ -15,24 +14,17 @@ class _WidgetTestPageOneState extends State<WidgetTestPageOne> {
   @override
   Widget build(BuildContext context) {
 
-    final myInheritedWidget = InheritedWidgetManger.of(context);
-
-    final inheritedTestModel = myInheritedWidget.data;
-
-    print("WidgetTestPageOne____${inheritedTestModel.count}");
+    print("WidgetTestPageOne___build");
 
     return Padding(
         padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-        child: Text("One页面获取到最新值：${inheritedTestModel.count}"));
+        child: Text("One页面不参与订阅："));
   }
-
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-
     print("WidgetTestPageOne___didChangeDependencies");
   }
-
 
 }

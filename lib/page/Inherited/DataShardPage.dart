@@ -7,7 +7,7 @@ import 'WidgetTestPageOne.dart';
 import 'WidgetTestPageThree.dart';
 import 'WidgetTestPageTwo.dart';
 
-////主界面
+//主界面
 class DataShardPage extends StatefulWidget {
   @override
   _DataShardPageState createState() => _DataShardPageState();
@@ -26,14 +26,6 @@ class _DataShardPageState extends State<DataShardPage> {
             floatingActionButton: FloatingActionButton(
               elevation: 0,
               child: WidgetTestPageButton(),
-//              child: Text('增加'),
-//              onPressed: () {
-//                setState(() {
-//                  //修改共享的数据，并刷新子组件
-//                  inheritedTestModel.count = inheritedTestModel.count + 1;
-//                });
-
-//              },
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
             appBar: AppBar(
