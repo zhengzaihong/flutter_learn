@@ -5,11 +5,13 @@ import 'MyInheritedWidget.dart';
 
 class InheritedWidgetManger extends StatefulWidget {
 
-  InheritedWidgetManger({Key key, this.child, this.data}) : super(key: key);
 
   final Widget child;
 
-  InheritedTestModel data;
+   InheritedTestModel data;
+
+  InheritedWidgetManger({Key key, this.child, this.data}) : super(key: key);
+
 
   @override
   InheritedWidgetMangerState createState() => InheritedWidgetMangerState();
@@ -17,8 +19,8 @@ class InheritedWidgetManger extends StatefulWidget {
   //定义一个方法，方便子树中的widget获取共享数据
   static MyInheritedWidget of(BuildContext context, {bool rebuild = true}) {
     return rebuild
-        ? (context.inheritFromWidgetOfExactType(MyInheritedWidget) as MyInheritedWidget)
-        : ((context.ancestorInheritedElementForWidgetOfExactType(MyInheritedWidget).widget) as MyInheritedWidget);
+        ? context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>()
+        : ((context.findAncestorWidgetOfExactType<MyInheritedWidget>()));
   }
 
 }

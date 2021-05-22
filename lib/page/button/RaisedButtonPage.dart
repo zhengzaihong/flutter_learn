@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn/util/ToastUtil.dart';
 
 import 'FunIconButton.dart';
 
@@ -160,7 +161,9 @@ class RaisedButtonPage extends StatelessWidget {
                           style: TextStyle(color: Colors.deepPurple)),
                       color: Colors.blue,
                       textColor: Colors.white,
-                      onPressed: () {},
+                      onPressed: () {
+                        ToastUtil.show("点击了");
+                      },
                       minWidth: 240,
                       leftIcon: Image.asset(
                         "images/mm.jpg",

@@ -70,7 +70,7 @@ class WebViewPageState extends State<WebViewPage> {
               //拿到controller
               _controller = controller;
 
-            //  _loadHtmlFromAssets();
+              _loadHtmlFromAssets();
             },
             onPageFinished: (url) {
 
